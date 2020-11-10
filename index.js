@@ -14,7 +14,7 @@ let wrapper = document.querySelector(".row");
 userObjs.forEach(userObj=>
     {
         let userCard= document.createElement("div");
-        userCard.className="col-lg-3 col-md-6 col-sm-12 mt-4";
+        userCard.className="col-lg-3 col-md-6 col-sm-12 mt-4 user";
         userCard.innerHTML= `<div class="card" style="width: 16rem;">
         <div class="card-body">
         <a href="detail.html?id=${userObj.name}|${userObj.username}|${userObj.email}" style="color: black; text-decoration: none">
