@@ -113,3 +113,35 @@ async function sortCards() {
     })
 }
 
+
+document.getElementById("search").addEventListener("change", function(event){
+    event.preventDefault()
+    let inputSearch= event.target.value;
+  });
+  
+ document.getElementById("buttonSearch").addEventListener("click", async function getFilteredUser(event){
+    event.preventDefault()
+    let obj = await loadUsers();
+      let input = document.getElementById("search").value;
+      //const result = search(input);
+      //console.log(result);
+      let newArray = [];
+for (let i = 0; i < obj.length; i++) {
+    if (obj[i].name ===input) {
+        newArray.push(obj[i]);
+    }
+}
+console.log(newArray);
+}
+);
+
+
+
+let cities = [
+    {name: 'Los Angeles', population: 3792621},
+    {name: 'New York', population: 8175133},
+    {name: 'Chicago', population: 2695598},
+    {name: 'Houston', population: 2099451},
+    {name: 'Philadelphia', population: 1526006}
+];
+
