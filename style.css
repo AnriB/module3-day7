@@ -16,3 +16,18 @@
     width: 100%;
     z-index: 200;
 }
+
+button{
+    background-color: #6d2e46;
+    color:white;
+    margin: 0 auto;
+
+}
+
+.button-container{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}

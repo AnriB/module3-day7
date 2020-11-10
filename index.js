@@ -84,7 +84,7 @@ async function sortCards() {
  /* document.getElementById("buttonSearch").addEventListener("click", function(event){
     event.preventDefault()
   });*/
-  document.getElementById("select").addEventListener("change", function(event){
+  /*document.getElementById("select").addEventListener("change", function(event){
     event.preventDefault()
     console.log(event.target.value);
   });
@@ -93,12 +93,11 @@ async function sortCards() {
 
   async function search(input){
     let obj = await loadUsers();
-    return Object.keys(obj).filter(key => {
-      return obj[key].name.includes(input)
-    })
+    let searchedobj =  obj.filter(function(input) {
+        return obj.name == input;
+    });
     .map(foundKey => ({...obj[foundKey], key: foundKey }))
   }
-
 
 
   document.getElementById("search").addEventListener("change", function(event){
@@ -113,3 +112,36 @@ async function sortCards() {
       console.log(result);
 }
 );
+*/
+
+async function sortCards() {
+    let cards = document.querySelectorAll(".user");
+
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].remove();
+    }
+
+    let userObjs = await loadUsers();
+    console.log(userObjs.sort(function(a,b){
+        let textA = a.username;
+        let textB = b.username;
+        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    }))
+    let wrapper = document.querySelector(".row");
+    userObjs.forEach(userObj=>
+    {
+        let userCard= document.createElement("div");
+        userCard.className="col-lg-3 col-md-6 col-sm-12 mt-4";
+        userCard.innerHTML=  `<div class="card" style="width: 16rem;">
+        <div class="card-body">
+        <h5 class="card-title">${userObj.name}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">${userObj.username}</h6>
+          <p class="card-text">${userObj.email}</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div> `
+      wrapper.appendChild(userCard);
+    })
+}
+
